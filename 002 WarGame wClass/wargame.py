@@ -17,11 +17,11 @@ class WarGame:
         """This method check status of player's deck"""
         if 0 == len(self.p1):
             print("Game Over! Player One wins!")
-            self.winner = 1
+            self.winner = 2
             return True
         elif 0 == len(self.p2):
             print("Game Over! Player Two wins!")
-            self.winner = 2
+            self.winner = 1
             return True
         print(f'P1 has {len(self.p1)} cards, P2 has {len(self.p2)} cards')
         return False

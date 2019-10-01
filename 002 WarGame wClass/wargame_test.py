@@ -8,11 +8,15 @@ class TestWarGame(unittest.TestCase):
         game = wargame.WarGame()
         self.assertEqual(len(game.p1), 12)
         self.assertEqual(len(game.p2), 12)
-        game.draw_card()
+        p1_card, p2_card = game.draw_card()
         self.assertEqual(len(game.p1), 11)
         self.assertEqual(len(game.p2), 11)
+        self.assertNotIn(p1_card, game.p1)
+        self.assertNotIn(p2_card, game.p2)
         for i in range(3):
-            game.draw_card()
+            p1_card, p2_card = game.draw_card()
+            self.assertNotIn(p1_card, game.p1)
+            self.assertNotIn(p2_card, game.p2)
         self.assertEqual(len(game.p1), 8)
         self.assertEqual(len(game.p2), 8)
         del game
@@ -29,14 +33,14 @@ class TestWarGame(unittest.TestCase):
         game = wargame.WarGame()
         game.p1 = []
         self.assertTrue(game.check_decks())
-        self.assertEqual(game.winner, 1)
+        self.assertEqual(game.winner, 2)
         del game
 
         print("Case 3: Player two wins")
         game = wargame.WarGame()
         game.p2 = []
         self.assertTrue(game.check_decks())
-        self.assertEqual(game.winner, 2)
+        self.assertEqual(game.winner, 1)
         del game
 
     def test_put_cards(self):
@@ -58,15 +62,13 @@ class TestWarGame(unittest.TestCase):
         self.assertEqual(len(game.p2), 12)
         del game
 
-    def test_single_round(self):
+    def test_clear_help_decks(self):
         game = wargame.WarGame()
-        self.assertEqual(len(game.p1), 12)
-        self.assertEqual(len(game.p2), 12)
-        game.single_round()
-        self.assertNotEqual(len(game.p1), 12)
-        self.assertNotEqual(len(game.p2), 12)
-        del game
-
-
-if __name__ == '__main__':
-    unittest.main()
+        p1_card, p2_card = game.draw_card()
+        game.p1_help_deck.append(p1_card)
+        game.p2_help_deck.append(p2_card)
+        self.assertEqual(len(game.p1_help_deck), 1)
+        self.assertEqual(len(game.p2_help_deck), 1)
+        game.clear_help_decks()
+        self.assertEqual(len(game.p1_help_deck), 0)
+        self.assertEqual(len(game.p2_help_deck), 0)
