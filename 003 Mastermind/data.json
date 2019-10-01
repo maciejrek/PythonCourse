@@ -1,0 +1,29 @@
+{
+  "word length": 4,
+  "symbols": [
+    "a",
+    "b",
+    "c"
+  ],
+  "rounds": 1,
+  "player_words": [
+    [
+      "a",
+      "a",
+      "a",
+      "a"
+    ],
+    [
+      "c",
+      "c",
+      "c",
+      "c"
+    ]
+  ],
+  "guess_word": [
+    "c",
+    "c",
+    "c",
+    "c"
+  ]
+}
