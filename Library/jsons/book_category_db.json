@@ -1,0 +1,9 @@
+{
+"0": {"name": "Fantasy"}, 
+"1": {"name": "Science Fiction"}, 
+"2": {"name": "Western"}, 
+"3": {"name": "Romance"},
+"4": {"name": "Thriller"},
+"5": {"name": "Mystery"},
+"6": {"name": "Detective Story"}
+}

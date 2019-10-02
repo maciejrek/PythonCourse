@@ -1,0 +1,42 @@
+{
+  "313232": {
+    "title": "Tajny Tytul",
+    "author": "0",
+    "isbn": "313232",
+    "owner": "0",
+    "category": "0",
+    "availability": true
+  },
+  "782831": {
+    "title": "Kiepski Tytul",
+    "author": "1",
+    "isbn": "782831",
+    "owner": "0",
+    "category": "3",
+    "availability": true
+  },
+  "141321": {
+    "title": "a",
+    "author": "3",
+    "isbn": "141321",
+    "owner": "0",
+    "category": "0",
+    "availability": true
+  },
+  "131415": {
+    "title": "A",
+    "author": "2",
+    "isbn": "131415",
+    "owner": "0",
+    "category": "2",
+    "availability": true
+  },
+  "167043": {
+    "title": "Aa",
+    "author": "3",
+    "isbn": "167043",
+    "owner": "0",
+    "category": "5",
+    "availability": true
+  }
+}

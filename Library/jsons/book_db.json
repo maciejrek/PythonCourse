@@ -1,0 +1,16 @@
+{
+  "313232": {
+    "title": "Tajny Tytul",
+    "author": 0,
+    "isbn": 313232,
+    "category": "0",
+    "availability": true
+  },
+  "782831": {
+    "title": "Kiepski Tytul",
+    "author": 1,
+    "isbn": 782831,
+    "category": "3",
+    "availability": true
+  }
+}
