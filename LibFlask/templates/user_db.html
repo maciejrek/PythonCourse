@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1> List of users </h1>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">User Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for post in posts %}
+        {% if post.active > 0%}
+        <tr>
+            <th scope="" row>{{post.uid}}</th>
+            <td>{{post.name}}</td>
+            <td>{{post.surname}}</td>
+            {% if post.active > 0 %}
+            <td>
+                <form action="/deactivate/user/{{post.uid}}" method="post">
+                    <button type="sumbit" value="{{post.uid}}" class="btn btn-danger">Deactivate</button>
+                </form>
+            </td>
+            {% else %}
+            <td> <button type="button" class="btn btn-success">Activate</button></td>
+            {% endif %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+
+<button type="button" class="btn btn-primary" onclick="toggle_display()">Add new user</button>
+<div class="content-section" style="visibility: hidden;">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+
+            <div class="form-group">
+                {{ form.name.label(class="form-control-label") }}
+                {% if form.name.errors %}
+                {{ form.name(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.name.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.name(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.surname.label(class="form-control-label") }}
+                {% if form.surname.errors %}
+                {{ form.surname(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.surname.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.surname(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

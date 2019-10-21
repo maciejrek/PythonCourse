@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1> History of borrows </h1>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Book</th>
+            <th scope="col">User</th>
+            <th scope="col">Date in</th>
+            <th scope="col">Date out</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for post in posts %}
+        <tr>
+            {% if post.date_in > post.date_out %}
+            <th scope="" row>{{post.uid}}</th>
+            <td>{{post.book.title}}</td>
+            <td>{{post.user.fullname}}</td>
+            <td>{{post.date_in}}</td>
+            <td>
+                <form action="/return_book/{{post.book.uid}}" method="post">
+                    <button type="sumbit" value="{{post.book.uid}}" class="btn btn-danger">Return book</button>
+                </form>
+            </td>
+            {% else %}
+            <th scope="" row>{{post.uid}}</th>
+            <td>{{post.book.title}}</td>
+            <td>{{post.user.fullname}}</td>
+            <td>{{post.date_in}}</td>
+            <td>{{post.date_out}}</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

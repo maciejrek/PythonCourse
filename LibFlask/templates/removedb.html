@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <h1> Are u sure, u want to remove database? </h1>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        {{ form.decision.label(class="form-control-label") }}
+        <div class="form-group">
+            {{ form.decision}}
+            {{ form.submit(class="btn btn-info btn-lg")}}
+        </div>
+    </form>
+</div>
+{% endblock content %}

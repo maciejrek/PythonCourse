@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Borrow a book</h1>
+{% for post in posts %}
+{% if post == 'usr_db'%}
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">User Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for i in posts[post]%}
+        {% if i.active > 0 %}
+        <tr>
+            <th scope="" row>{{i.uid}}</th>
+            <td>{{i.name}}</td>
+            <td>{{i.surname}}</td>
+            <td>
+                <form action="{{posts['book_uid']}}/{{i.uid}}" method="post">
+                    <button type="sumbit" value="{{i.uid}}" class="btn btn-success">Borrow a book</button>
+                </form>
+            </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+{% endfor %}
+
+{% endblock content %}

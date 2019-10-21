@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1> List of inactive positions </h1>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Uid</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for post in posts%}
+        {%for uid in posts[post]%}
+        <tr>
+            <th scope="" row>{{post}}</th>
+            <td>{{uid}}</td>
+            <td>
+                <form action="/activate/{{post}}/{{uid}}" method="post">
+                    <button type="sumbit" value="{{uid}}" class="btn btn-danger">Activate</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
