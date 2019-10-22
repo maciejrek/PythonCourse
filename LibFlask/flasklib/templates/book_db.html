@@ -12,18 +12,18 @@
         </tr>
     </thead>
     <tbody>
-        {% for post in posts %}
-        {% if post.active > 0%}
+        {% for book in posts %}
+        {% if book.active > 0%}
         <tr>
-            <th scope="" row>{{post.uid}}</th>
-            <td>{{post.title}}</td>
-            <td>{{post.author.fullname}}</td>
-            <td>{{post.category.name}}</td>
-            <td>{{post.isbn}}</td>
-            {% if post.active > 0 %}
+            <th scope="" row>{{book.uid}}</th>
+            <td>{{book.title}}</td>
+            <td>{{book.author.fullname}}</td>
+            <td>{{book.category.name}}</td>
+            <td>{{book.isbn}}</td>
+            {% if book.active > 0 %}
             <td>
-                <form action="/borrow_a_book/{{post.uid}}" method="post">
-                    <button type="sumbit" value="{{post.uid}}" class="btn btn-outline-success">Borrow</button>
+                <form action="/borrow_a_book/{{book.uid}}" method="post">
+                    <button type="sumbit" value="{{book.uid}}" class="btn btn-outline-success">Borrow</button>
                 </form>
             </td>
             {% else %}

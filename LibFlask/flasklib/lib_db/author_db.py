@@ -1,5 +1,5 @@
-from lib_obj.author import Author
-from lib_db import LibDb
+from flasklib.lib_obj.author import Author
+from flasklib.lib_db import LibDb
 
 
 def get_author_dict(db: LibDb.LibDb):

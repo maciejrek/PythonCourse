@@ -1,7 +1,8 @@
-from lib_obj.book import Book
-from lib_obj.book import BookObj
-from lib_obj import author, category
-from lib_db import LibDb
+from flasklib.lib_obj.book import Book
+from flasklib.lib_obj.book import BookObj
+from flasklib.lib_obj import author
+from flasklib.lib_obj import category
+from flasklib.lib_db import LibDb
 
 
 def get_book_dict(db: LibDb.LibDb):

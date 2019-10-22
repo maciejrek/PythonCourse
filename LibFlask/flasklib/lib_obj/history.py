@@ -1,5 +1,5 @@
 from datetime import datetime
-from lib_obj import user, book
+from flasklib.lib_obj import book, user
 
 
 class History:

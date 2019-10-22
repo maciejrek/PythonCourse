@@ -1,4 +1,5 @@
-from lib_obj import author as aut, category as cat
+from flasklib.lib_obj import author as aut
+from flasklib.lib_obj import category as cat
 
 
 class Book:

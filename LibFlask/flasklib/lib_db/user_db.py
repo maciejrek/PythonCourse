@@ -1,5 +1,5 @@
-from lib_obj.user import User
-from lib_db import LibDb
+from flasklib.lib_obj.user import User
+from flasklib.lib_db import LibDb
 
 
 def get_user_dict(db: LibDb.LibDb):

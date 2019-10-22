@@ -11,16 +11,16 @@
         </tr>
     </thead>
     <tbody>
-        {% for post in posts %}
-        {% if post.active > 0%}
+        {% for usr in posts %}
+        {% if usr.active > 0%}
         <tr>
-            <th scope="" row>{{post.uid}}</th>
-            <td>{{post.name}}</td>
-            <td>{{post.surname}}</td>
-            {% if post.active > 0 %}
+            <th scope="" row>{{usr.uid}}</th>
+            <td>{{usr.name}}</td>
+            <td>{{usr.surname}}</td>
+            {% if usr.active > 0 %}
             <td>
-                <form action="/deactivate/user/{{post.uid}}" method="post">
-                    <button type="sumbit" value="{{post.uid}}" class="btn btn-danger">Deactivate</button>
+                <form action="{{url_for('deactivate_something',who='user',uid=usr.uid)}}" method="post">
+                    <button type="sumbit" class="btn btn-danger">Deactivate</button>
                 </form>
             </td>
             {% else %}

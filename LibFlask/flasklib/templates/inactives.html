@@ -16,8 +16,8 @@
             <th scope="" row>{{post}}</th>
             <td>{{uid}}</td>
             <td>
-                <form action="/activate/{{post}}/{{uid}}" method="post">
-                    <button type="sumbit" value="{{uid}}" class="btn btn-danger">Activate</button>
+                <form action="{{url_for('activate_something',who=post,uid=uid)}}" method="post">
+                    <button type="sumbit" class="btn btn-danger">Activate</button>
                 </form>
             </td>
         </tr>

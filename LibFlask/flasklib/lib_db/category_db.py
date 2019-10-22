@@ -1,5 +1,5 @@
-from lib_obj.category import Category
-from lib_db import LibDb
+from flasklib.lib_obj.category import Category
+from flasklib.lib_db import LibDb
 
 
 def get_category_dict(db: LibDb.LibDb):

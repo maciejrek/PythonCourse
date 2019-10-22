@@ -1,10 +1,9 @@
-from flask import Flask, render_template, flash, url_for, redirect, request
-from forms import AddUserForm, AddAuthorForm, AddCategoryForm, AddBookForm, RemoveDatabase
-import manager
+from flask import render_template, flash, url_for, redirect, request
+from flasklib.forms import AddUserForm, AddAuthorForm, AddCategoryForm, AddBookForm, RemoveDatabase
+from flasklib import app
+from flasklib import manager
 
-app = Flask(__name__)
 mgr = manager.LibraryManager()
-app.config['SECRET_KEY'] = '4fff2e31bdb2baf9d1261d26833c6411'
 
 
 @app.route("/")
@@ -35,6 +34,7 @@ def user_db():
 
 @app.route("/deactivate/<who>/<uid>", methods=['POST'])
 def deactivate_something(who=None, uid=None):
+    print(who, uid)
     if who == 'user':
         mgr.deactivate_user(mgr.database, uid)
         return redirect(url_for('user_db'))
@@ -144,7 +144,3 @@ def remove_database():
         mgr.database.prepare_db("LibraryDatabase")
         return redirect(url_for('home'))
     return render_template('removedb.html', form=form)
-
-
-if __name__ == '__main__':
-    app.run(debug=True)

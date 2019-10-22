@@ -1,7 +1,7 @@
-from lib_db import LibDb
-from lib_obj.history import History, HistoryObj
-from lib_obj.book import Book
-from lib_obj.user import User
+from flasklib.lib_db import LibDb
+from flasklib.lib_obj.history import History, HistoryObj
+from flasklib.lib_obj.book import Book
+from flasklib.lib_obj.user import User
 from datetime import datetime
 
 

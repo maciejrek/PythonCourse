@@ -1,4 +1,4 @@
-from lib_db import *
+from flasklib.lib_db import *
 
 
 class LibraryManager:
