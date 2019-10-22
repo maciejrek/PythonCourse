@@ -34,31 +34,6 @@ def get_history_dict_by_book(db: LibDb.LibDb):
     return by_book
 
 
-def get_history_obj_list(db: LibDb.LibDb):
-    hist_db = db.return_tab("history")
-    hist_list = list()
-    for i in hist_db:
-        uid, book_id, user_id, date_in, date_out = i
-        hist_list.append(History(uid, book_id, user_id, date_in, date_out))
-    return hist_list
-
-
-def get_history_list_by_user(db: LibDb.LibDb, user_id: int):
-    hist_dict = get_history_dict_by_user(db)
-    if user_id not in hist_dict.keys():
-        return []
-    temp_list = hist_dict[user_id]
-    return [i for i in temp_list]
-
-
-def get_history_list_by_book(db: LibDb.LibDb, book_id: int):
-    hist_dict = get_history_dict_by_book(db)
-    if book_id not in hist_dict.keys():
-        return []
-    temp_list = hist_dict[book_id]
-    return [i for i in temp_list]
-
-
 def get_book_status(db: LibDb.LibDb, book_id: int):
     temp = db.return_tab_by_category("history", "id_book", book_id)
     if not temp:

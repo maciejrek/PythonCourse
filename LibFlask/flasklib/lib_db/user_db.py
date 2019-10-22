@@ -20,17 +20,6 @@ def get_user_obj_list(db: LibDb.LibDb):
     return user_list
 
 
-def get_user_list(db: LibDb.LibDb):
-    user_dict = get_user_dict(db)
-    user_list = list()
-    user_id_list = list()
-    for i in user_dict:
-        if user_dict[i].active:
-            user_list.append(user_dict[i].fullname)
-            user_id_list.append(i)
-    return user_list, user_id_list
-
-
 def get_user_by_id(db: LibDb.LibDb, uid: int):
     usr_dict = get_user_dict(db)
     return usr_dict[uid]

@@ -20,17 +20,6 @@ def get_category_obj_list(db: LibDb.LibDb):
     return cat_dict
 
 
-def get_category_list(db: LibDb.LibDb):
-    cat_dict = get_category_dict(db)
-    cat_list = list()
-    cat_id_list = list()
-    for i in cat_dict:
-        if cat_dict[i].active:
-            cat_list.append(cat_dict[i].name)
-            cat_id_list.append(i)
-    return cat_list, cat_id_list
-
-
 def get_category_tuple_list(db: LibDb.LibDb):
     cat_dict = get_category_dict(db)
     cat_list = list()

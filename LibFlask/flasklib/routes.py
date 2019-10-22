@@ -1,4 +1,4 @@
-from flask import render_template, flash, url_for, redirect, request
+from flask import render_template, flash, url_for, redirect, request, abort
 from flasklib.forms import AddUserForm, AddAuthorForm, AddCategoryForm, AddBookForm, RemoveDatabase
 from flasklib import app
 from flasklib import manager
@@ -79,19 +79,21 @@ def book_db():
     return render_template('book_db.html', title='Book database', posts=mgr.prep_book(mgr.database), form=form)
 
 
-@app.route("/borrow_a_book/<uid>", methods=['GET', 'POST'])
-def borrow_choose_user(uid=None):
-    return render_template('borrow_book.html', title='User database',
-                           posts={'usr_db': mgr.prep_user(mgr.database), 'book_uid': uid})
-
-
 @app.route("/borrow_a_book/<book_uid>/<usr_uid>", methods=['GET', 'POST'])
 def borrow_a_book(book_uid=None, usr_uid=None):
-    if mgr.is_book_in_library(mgr.database, book_uid):
-        mgr.borrow_a_book(mgr.database, book_uid, usr_uid)
-        flash(f"Borrowed a book!", 'success')
+    if usr_uid == '-1':
+        if mgr.is_book_in_library(mgr.database, book_uid):
+            return render_template('borrow_book.html', title='User database',
+                                   posts={'usr_db': mgr.prep_user(mgr.database), 'book_uid': book_uid})
+        else:
+            flash(f"Cannot borrow book - already borrowed!", 'danger')
     else:
-        flash(f"Failed to borrow a book!", 'danger')
+        if mgr.is_book_in_library(mgr.database, book_uid):
+            mgr.borrow_a_book(mgr.database, book_uid, usr_uid)
+            flash(f"Borrowed a book!", 'success')
+            return redirect(url_for('borrows'))
+        else:
+            flash(f"Failed to borrow a book!", 'danger')
     return redirect(url_for('home'))
 
 
@@ -102,7 +104,7 @@ def return_a_book(uid=None):
         flash(f"Returned a book!", 'success')
     else:
         flash(f"Failed to return a book!", 'danger')
-    return redirect(url_for('home'))
+    return redirect(url_for('borrows'))
 
 
 @app.route("/author_db", methods=['GET', 'POST'])

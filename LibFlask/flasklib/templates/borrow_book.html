@@ -20,7 +20,7 @@
             <td>{{i.name}}</td>
             <td>{{i.surname}}</td>
             <td>
-                <form action="{{posts['book_uid']}}/{{i.uid}}" method="post">
+                <form action="{{url_for('borrow_a_book',book_uid=posts['book_uid'],usr_uid=i.uid)}}" method="post">
                     <button type="sumbit" class="btn btn-success">Borrow a book</button>
                 </form>
             </td>
